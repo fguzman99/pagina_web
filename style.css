@@ -11,7 +11,6 @@ body {
     line-height: 1.6;
 }
 
-
 header {
     background: #000;
     color: #fff;
@@ -19,7 +18,7 @@ header {
     text-align: center;
 }
 
-.Logo img{
+.Logo img {
     width: 200px;
     height: auto;
     display: block;
@@ -36,12 +35,15 @@ nav {
     justify-content: center;
     background: #333;
     z-index: 1000;
+    flex-wrap: wrap; /* ayuda en pantallas pequeñas */
 }
+
 nav a {
     color: #fff;
     padding: 14px 20px;
     text-decoration: none;
 }
+
 nav a:hover {
     background: #555;
 }
@@ -89,12 +91,49 @@ section {
 
 .galeria {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* escritorio */
     gap: 15px;
     justify-content: center;
 }
+
 .galeria img {
-    width: 350px;
+    max-width: 100%; /* se adapta al contenedor */
     height: auto;
     border-radius: 8px;
+}
+
+/* ------------------ */
+/* MEDIA QUERIES */
+/* ------------------ */
+
+/* Tablets (pantallas medianas) */
+@media (max-width: 1024px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    }
+    nav a {
+        padding: 10px 15px;
+    }
+}
+
+/* Celulares (pantallas pequeñas) */
+@media (max-width: 600px) {
+    .galeria {
+        grid-template-columns: 1fr; /* 1 columna */
+    }
+
+    nav {
+        flex-direction: column; /* menú vertical */
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    #contacto h2 {
+        font-size: 22px;
+    }
 }
